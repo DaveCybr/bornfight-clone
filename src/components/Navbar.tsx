@@ -30,7 +30,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            bornfight
+            nanoidn
           </motion.a>
 
           <div className="flex items-center gap-4">
@@ -71,7 +71,9 @@ export function Navbar() {
           >
             <div className="h-full flex flex-col px-6 md:px-12 py-6">
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-bold tracking-tight">bornfight</span>
+                <span className="text-2xl font-bold tracking-tight">
+                  nanoidn
+                </span>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 hover:bg-secondary rounded-lg transition-colors"

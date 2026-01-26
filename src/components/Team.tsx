@@ -21,50 +21,65 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    id: "tomislav",
-    name: "Tomislav Grubišić",
-    role: "CEO & Co-founder",
-    image: ceoImage,
+    id: "lynna",
+    name: "Lynna Ayu M",
+    role: "CEO and CO-Founder",
+    image: "https://nanoyearbook.com/wp-content/uploads/2025/08/1-111111.png",
     isCofounder: true,
     story:
-      "In 2009, I co-founded Degordian, a social media agency that grew to become one of the largest regional digital agencies. That journey taught me everything about building companies from scratch — the highs, the lows, and everything in between.",
+      "Memulai Nano Yearbook dengan visi menghadirkan dokumentasi sekolah yang tidak hanya menjadi koleksi, tapi juga pengalaman digital interaktif yang bisa dinikmati selamanya.",
     quote:
-      "Building ventures isn't just about the money. It's about finding the right people, giving them the tools they need, and watching them create something amazing.",
+      "Setiap momen berharga layak diabadikan dengan cara yang istimewa. Kami ada untuk memastikan kenangan angkatan tidak hanya tersimpan, tapi terus hidup.",
     linkedIn: "#",
     twitter: "#",
-    bio: "Serial entrepreneur with 15+ years of experience in building and scaling digital companies. Led multiple successful exits and currently oversees Bornfight's venture portfolio.",
+    bio: "Pemimpin kreatif dengan pengalaman lebih dari 8 tahun di industri creative documentation. Membawa Nano Yearbook menjadi #1 Digital Yearbook di Indonesia dengan kepercayaan dari 231+ sekolah.",
   },
   {
-    id: "ana",
-    name: "Ana Kovačević",
-    role: "CTO & Co-founder",
-    image: ctoImage,
-    isCofounder: true,
-    story:
-      "My path to co-founding Bornfight started in the trenches of software development. I spent years building products for startups and enterprises alike, learning what makes technology truly transformative.",
-    quote:
-      "Great technology is invisible — it just works. Our job is to build the infrastructure that lets founders focus on their vision, not their tech stack.",
+    id: "rama",
+    name: "Rama Hadyan F",
+    role: "Marcom Manager",
+    image: "https://nanoyearbook.com/wp-content/uploads/2025/08/2.png",
+    isCofounder: false,
     linkedIn: "#",
     twitter: "#",
-    bio: "Technology leader with deep expertise in scalable architectures and product development. Passionate about mentoring technical founders and building world-class engineering teams.",
+    bio: "Ahli marketing dan komunikasi yang memastikan brand Nano Yearbook sampai ke seluruh sekolah di Indonesia. Mengelola strategi komunikasi dan hubungan dengan mitra sekolah.",
   },
+  // {
+  //   id: "yusril",
+  //   name: "Yusril Fahmi H",
+  //   role: "Production Manager",
+  //   image: "https://nanoyearbook.com/wp-content/uploads/2025/08/3.png",
+  //   isCofounder: false,
+  //   linkedIn: "#",
+  //   twitter: "#",
+  //   bio: "Mengelola seluruh proses produksi dari sesi foto, video, hingga pencetakan buku tahunan. Memastikan kualitas premium di setiap project dengan tim produksi profesional.",
+  // },
   {
-    id: "marko",
-    name: "Marko Horvat",
-    role: "COO",
-    image: cooImage,
+    id: "veny",
+    name: "Veny Kurniawati",
+    role: "Project Leader",
+    image: "https://nanoyearbook.com/wp-content/uploads/2025/08/5.png",
     isCofounder: false,
     linkedIn: "#",
-    bio: "Operations expert who ensures our ventures run smoothly from day one. Specializes in building efficient processes and helping startups scale their operations sustainably.",
+    bio: "Memimpin eksekusi project dari awal hingga akhir. Koordinasi dengan sekolah, tim kreatif, dan produksi untuk memastikan timeline dan hasil sesuai ekspektasi klien.",
   },
   {
-    id: "petra",
-    name: "Petra Novak",
-    role: "Head of Ventures",
-    image: headVenturesImage,
+    id: "iqbal",
+    name: "Iqbal Amanta",
+    role: "Creative Advisor",
+    image: "https://nanoyearbook.com/wp-content/uploads/2025/08/4.png",
     isCofounder: false,
     linkedIn: "#",
-    bio: "Investment professional with a keen eye for promising founders and innovative ideas. Leads our deal flow, due diligence, and portfolio support efforts.",
+    bio: "Penasihat kreatif yang membawa inovasi dan konsep fresh untuk setiap project. Memastikan setiap buku tahunan memiliki identitas unik dan berkesan.",
+  },
+  {
+    id: "raras",
+    name: "Raras Dwistian",
+    role: "HR Dept.",
+    image: "https://nanoyearbook.com/wp-content/uploads/2025/08/6.png",
+    isCofounder: false,
+    linkedIn: "#",
+    bio: "Mengelola sumber daya manusia dan membangun tim yang solid. Memastikan setiap anggota tim berkembang dan berkontribusi maksimal untuk kesuksesan Nano Yearbook.",
   },
 ];
 
@@ -224,11 +239,10 @@ export function Team() {
           <p className="text-accent uppercase tracking-[0.3em] text-sm mb-4">
             Our Team
           </p>
-          <h2 className="heading-lg mb-6">Meet the people behind Bornfight</h2>
-          <p className="body-lg max-w-2xl mx-auto">
-            Entrepreneurs, operators, and builders who've been in your shoes. 
-            We bring decades of combined experience to every venture we support.
-          </p>
+          <h2 className="heading-lg mb-6">
+            Meet The People Behind{" "}
+            <span className="text-gradient-accent">nanoidn</span>
+          </h2>
         </motion.div>
 
         {/* Co-founders Section */}

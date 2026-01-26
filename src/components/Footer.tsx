@@ -31,7 +31,7 @@ export function Footer() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                bornfight
+                nanoidn
               </motion.a>
               <p className="text-sm text-muted-foreground">
                 Building ventures that make an impact.

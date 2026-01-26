@@ -56,7 +56,7 @@ export function Stats() {
           <p className="text-accent uppercase tracking-[0.3em] text-sm mb-4">
             Our impact
           </p>
-          <h2 className="heading-lg">History of our success</h2>
+          <h2 className="heading-lg">History Of Our Success</h2>
         </motion.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">

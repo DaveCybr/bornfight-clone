@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-team.jpg";
+import heroImage from "@/assets/hero-team-blue.png";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center section-padding pt-32">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroImage} 
-          alt="Team collaboration" 
+        <img
+          src={heroImage}
+          alt="Team collaboration"
           className="w-full h-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
       </div>
-      
+
       {/* Background gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(145_80%_45%/0.08)_0%,transparent_50%)]" />
-      
+
       <div className="relative z-10 max-w-6xl mx-auto text-center">
         <motion.p
           className="text-accent uppercase tracking-[0.3em] text-sm md:text-base mb-8"
@@ -26,7 +26,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Venture Builder
+          Nano Creative Studio
         </motion.p>
 
         <motion.h1
@@ -35,9 +35,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          We're looking for founders
+          Abadikan Momen Terbaik
           <br />
-          <span className="text-gradient-accent">& great business ideas</span>
+          <span className="text-gradient-accent">Dalam Cerita Visual</span>
         </motion.h1>
 
         <motion.p
@@ -46,8 +46,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          More than just financing. Co-founding your company with Bornfight means you get 
-          a team of product builders, business operators, entrepreneurs and fund-raisers.
+          Lebih dari sekadar buku kenangan. NANO menghadirkan tim kreatif
+          profesional untuk mendokumentasikan perjalanan sekolah Anda dalam
+          bentuk visual yang berkesan dan sinematik.
         </motion.p>
 
         <motion.div
@@ -60,8 +61,8 @@ export function Hero() {
             Get in touch
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="border-foreground/20 bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-lg"
           >
             View portfolio

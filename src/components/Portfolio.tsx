@@ -3,24 +3,34 @@ import { ArrowUpRight } from "lucide-react";
 
 const ventures = [
   {
-    name: "SWEN",
-    description: "Revolutionary fashion platform",
-    category: "E-commerce",
+    name: "DRONE SHOOT",
+    description: "Aerial photography & videography",
+    category: "Photography",
   },
   {
-    name: "Tabu",
-    description: "Next-gen social experience",
-    category: "Social",
+    name: "AUGMENTED REALITY",
+    description: "Interactive AR experiences",
+    category: "Innovation",
   },
   {
-    name: "Elevien",
-    description: "Enterprise SaaS solution",
-    category: "B2B SaaS",
+    name: "EXCLUSIVE YEARBOOK",
+    description: "Premium custom yearbooks",
+    category: "Publishing",
   },
   {
-    name: "Determ",
-    description: "Media monitoring intelligence",
-    category: "Analytics",
+    name: "FILM ANGKATAN",
+    description: "Cinematic class films",
+    category: "Videography",
+  },
+  {
+    name: "NANO HUB CREATIVE",
+    description: "Digital Yearbook Platform",
+    category: "Technology",
+  },
+  {
+    name: "EVENT COVERAGE",
+    description: "Professional event documentation",
+    category: "Media",
   },
 ];
 
@@ -38,7 +48,7 @@ export function Portfolio() {
           <p className="text-accent uppercase tracking-[0.3em] text-sm mb-4">
             Our ventures
           </p>
-          <h2 className="heading-lg">Venture portfolio</h2>
+          <h2 className="heading-lg">Production Service</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">

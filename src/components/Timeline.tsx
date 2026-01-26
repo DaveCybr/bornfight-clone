@@ -103,7 +103,8 @@ export function Timeline() {
       const container = scrollContainerRef.current;
       const itemWidth = container.scrollWidth / milestones.length;
       container.scrollTo({
-        left: itemWidth * clampedIndex - container.clientWidth / 2 + itemWidth / 2,
+        left:
+          itemWidth * clampedIndex - container.clientWidth / 2 + itemWidth / 2,
         behavior: "smooth",
       });
     }
@@ -125,7 +126,7 @@ export function Timeline() {
           <p className="text-accent uppercase tracking-[0.3em] text-sm mb-4">
             Our Journey
           </p>
-          <h2 className="heading-lg">History of our success</h2>
+          <h2 className="heading-lg">History Of Our Success</h2>
         </motion.div>
 
         {/* Year selector */}
@@ -187,9 +188,7 @@ export function Timeline() {
             >
               <div
                 className={`glass-card rounded-2xl p-8 h-full border-2 transition-colors ${
-                  activeIndex === index
-                    ? "border-accent"
-                    : "border-transparent"
+                  activeIndex === index ? "border-accent" : "border-transparent"
                 } ${milestone.highlight ? "bg-accent/5" : ""}`}
               >
                 <div className="flex items-center gap-3 mb-4">

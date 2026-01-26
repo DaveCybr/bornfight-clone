@@ -6,8 +6,8 @@ export function CTA() {
   return (
     <section className="section-padding relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(145_80%_45%/0.12)_0%,transparent_60%)]" />
-      
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(220_90%_55%/0.18)_0%,transparent_60%)]" />
+
       <motion.div
         className="relative z-10 max-w-4xl mx-auto text-center"
         initial={{ opacity: 0, y: 30 }}
@@ -21,8 +21,8 @@ export function CTA() {
           <span className="text-gradient-accent">something great?</span>
         </h2>
         <p className="body-lg mb-10 max-w-2xl mx-auto">
-          We're always looking for ambitious founders with great ideas. 
-          Let's discuss how we can help you build the next big thing.
+          We're always looking for ambitious founders with great ideas. Let's
+          discuss how we can help you build the next big thing.
         </p>
         <Button className="bg-accent text-accent-foreground hover:bg-accent/90 px-10 py-7 text-lg group">
           Start with us

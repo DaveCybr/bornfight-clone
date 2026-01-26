@@ -1,34 +1,34 @@
 import { motion } from "framer-motion";
-import { Users, Settings, Wallet, FileText } from "lucide-react";
+import { BookOpen, Calendar, Camera, Video } from "lucide-react";
 
 const features = [
   {
     number: "01",
-    title: "Dedicated team",
+    title: "Buku Tahunan Digital & Cetak",
     description:
-      "When you know the problem but don't have the resources or expertise, Bornfight gets you a team of experts at your disposal. Instead of hiring new people, we provide an already experienced task force.",
-    icon: Users,
+      "Desain buku tahunan yang modern dan personal untuk setiap angkatan. Kami menggabungkan kreativitas dengan storytelling untuk menciptakan kenangan yang tak terlupakan dalam format digital maupun cetak berkualitas premium.",
+    icon: BookOpen,
   },
   {
     number: "02",
-    title: "Operational Support",
+    title: "Video Sinematik Angkatan",
     description:
-      "Daily operations create brand new challenges every day — our management knows how to prepare you for what's ahead. This saves you time and valuable resources.",
-    icon: Settings,
+      "Tim videografer profesional kami menciptakan video dokumenter dengan pendekatan sinematik. Setiap frame dirancang untuk menangkap emosi, persahabatan, dan momen-momen berharga sepanjang perjalanan sekolah.",
+    icon: Video,
   },
   {
     number: "03",
-    title: "Financing & Investments",
+    title: "Sesi Foto Profesional",
     description:
-      "Funding is always hard to come by, especially in early stages. Bornfight invests in your idea and connects you with the right people and finds capital to launch your startup to the next level.",
-    icon: Wallet,
+      "Foto individual dan kelompok dengan konsep kreatif dan lighting profesional. Kami memastikan setiap siswa tampil percaya diri dan natural dalam setiap jepretan kamera.",
+    icon: Camera,
   },
   {
     number: "04",
-    title: "Administrative Support",
+    title: "Dokumentasi Event Sekolah",
     description:
-      "Starting small means you have to take multiple roles at once. Bornfight takes care of the administration while you focus on your company and work on ideas that help turn your ideas into successful products.",
-    icon: FileText,
+      "Dari wisuda, pentas seni, hingga acara perpisahan - kami mendokumentasikan setiap momen penting dengan detail. Hasil dokumentasi siap untuk digunakan dalam buku tahunan atau media sosial sekolah.",
+    icon: Calendar,
   },
 ];
 
@@ -65,7 +65,7 @@ export function Features() {
           <p className="text-accent uppercase tracking-[0.3em] text-sm mb-4">
             What we offer
           </p>
-          <h2 className="heading-lg">More than just financing</h2>
+          <h2 className="heading-lg">Turn Moments Into Memories</h2>
         </motion.div>
 
         <motion.div
