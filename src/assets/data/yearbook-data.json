@@ -1,0 +1,100 @@
+{
+  "yearbookProjects": [
+    {
+      "id": "1",
+      "schoolName": "SMA Negeri 1 Jember",
+      "year": 2026,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/9.-INDIVIDU-SESSION-com.jpg",
+      "ebookUrl": "#",
+      "location": "Jember, Jawa Timur"
+    },
+    {
+      "id": "2",
+      "schoolName": "SMA Negeri 5 Jember",
+      "year": 2026,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/11.-OUTDOOR-PERSONAL-com.jpg",
+      "ebookUrl": "#",
+      "location": "Jember, Jawa Timur"
+    },
+    {
+      "id": "3",
+      "schoolName": "SMAN 2 Bondowoso",
+      "year": 2026,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/5-com.jpg",
+      "ebookUrl": "#",
+      "location": "Bondowoso, Jawa Timur"
+    },
+    {
+      "id": "4",
+      "schoolName": "SMK Petra 4 Sidoarjo",
+      "year": 2025,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/10.-OUTDOOR-SESSION-com.jpg",
+      "ebookUrl": "#",
+      "location": "Sidoarjo, Jawa Timur"
+    },
+    {
+      "id": "5",
+      "schoolName": "SMA Negeri 1 Bondowoso",
+      "year": 2025,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/9.-INDIVIDU-SESSION-com.jpg",
+      "ebookUrl": "#",
+      "location": "Bondowoso, Jawa Timur"
+    },
+    {
+      "id": "6",
+      "schoolName": "SMA Negeri 3 Jember",
+      "year": 2025,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/11.-OUTDOOR-PERSONAL-com.jpg",
+      "ebookUrl": "#",
+      "location": "Jember, Jawa Timur"
+    },
+    {
+      "id": "7",
+      "schoolName": "SMK Negeri 1 Jember",
+      "year": 2024,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/5-com.jpg",
+      "ebookUrl": "#",
+      "location": "Jember, Jawa Timur"
+    },
+    {
+      "id": "8",
+      "schoolName": "SMA Muhammadiyah 3 Jember",
+      "year": 2024,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/10.-OUTDOOR-SESSION-com.jpg",
+      "ebookUrl": "#",
+      "location": "Jember, Jawa Timur"
+    },
+    {
+      "id": "9",
+      "schoolName": "SMA Negeri 2 Jember",
+      "year": 2024,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/9.-INDIVIDU-SESSION-com.jpg",
+      "ebookUrl": "#",
+      "location": "Jember, Jawa Timur"
+    },
+    {
+      "id": "10",
+      "schoolName": "MA Negeri 1 Jember",
+      "year": 2024,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/11.-OUTDOOR-PERSONAL-com.jpg",
+      "ebookUrl": "#",
+      "location": "Jember, Jawa Timur"
+    },
+    {
+      "id": "11",
+      "schoolName": "SMA Al-Azhar Jember",
+      "year": 2023,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/5-com.jpg",
+      "ebookUrl": "#",
+      "location": "Jember, Jawa Timur"
+    },
+    {
+      "id": "12",
+      "schoolName": "SMK Negeri 2 Bondowoso",
+      "year": 2023,
+      "thumbnail": "https://nanoyearbook.com/wp-content/uploads/2025/08/10.-OUTDOOR-SESSION-com.jpg",
+      "ebookUrl": "#",
+      "location": "Bondowoso, Jawa Timur"
+    }
+  ]
+}

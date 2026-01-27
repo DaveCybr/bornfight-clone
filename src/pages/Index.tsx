@@ -8,6 +8,8 @@ import { Team } from "@/components/Team";
 import { Portfolio } from "@/components/Portfolio";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
+import { PhotoSession } from "@/components/PhotoSession";
+import { Testimonials } from "@/components/Testimonials";
 
 const Index = () => {
   return (
@@ -15,11 +17,13 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Features />
+      <PhotoSession />
       <Stats />
       <Timeline />
       <Process />
       <Team />
       <Portfolio />
+      <Testimonials />
       <CTA />
       <Footer />
     </div>
