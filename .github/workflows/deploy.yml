@@ -1,0 +1,9 @@
+dangerous-clean-slate: false  # NEVER delete all files
+
+exclude: |
+  **/wp/**              # Protect WordPress folder
+  **/wp-admin/**        # Protect WP admin
+  **/wp-content/**      # Protect WP content
+  **/wp-includes/**     # Protect WP core
+  **/wp-config.php      # Protect WP config
+  **/wp-*.php           # Protect WP files
