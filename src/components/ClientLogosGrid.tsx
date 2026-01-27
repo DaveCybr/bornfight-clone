@@ -1,3 +1,4 @@
+import { logo } from "@/lib/assets";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -13,73 +14,73 @@ const clientLogos: ClientLogo[] = [
   {
     id: "1",
     name: "MAN Bondowoso 1",
-    logo: "/src/assets/logos/manbologo1.png",
+    logo: logo("manbologo1.png"),
     location: "Bondowoso",
   },
   {
     id: "2",
     name: "MAN Jember (Manjesal)",
-    logo: "/src/assets/logos/manjesalogo1.png",
+    logo: logo("manjesalogo1.png"),
     location: "Jember",
   },
   {
     id: "3",
     name: "SMAN Sapen Satu",
-    logo: "/src/assets/logos/skensapaslogo1.png",
+    logo: logo("skensapaslogo1.png"),
     location: "Yogyakarta",
   },
   {
     id: "4",
     name: "SMA Darul A'mal",
-    logo: "/src/assets/logos/smadalogo1.png",
+    logo: logo("smadalogo1.png"),
     location: "Jakarta",
   },
   {
     id: "5",
     name: "SMA Data (Darul Ta'lim)",
-    logo: "/src/assets/logos/smadatalogo1.png",
+    logo: logo("smadatalogo1.png"),
     location: "Jember",
   },
   {
     id: "6",
     name: "SMA Kendal Mulia 1",
-    logo: "/src/assets/logos/smakendalmjlogo1.png",
+    logo: logo("smakendalmjlogo1.png"),
     location: "Kendal",
   },
   {
     id: "7",
     name: "SMA Kencana Bogor",
-    logo: "/src/assets/logos/smakensabologo.png",
+    logo: logo("smakensabologo.png"),
     location: "Bogor",
   },
   {
     id: "8",
     name: "SMA Muhammadiyah 1 Genteng",
-    logo: "/src/assets/logos/smamuhagentenglogo1.png",
+    logo: logo("smamuhagentenglogo1.png"),
     location: "Banyuwangi",
   },
   {
     id: "9",
     name: "SMAN Jaluko 1",
-    logo: "/src/assets/logos/smanjalogo1.png",
+    logo: logo("smanjalogo1.png"),
     location: "Jambi",
   },
   {
     id: "10",
     name: "SMA Pgri Tulum 1",
-    logo: "/src/assets/logos/smapgrilumlgo1.png",
+    logo: logo("smapgrilumlgo1.png"),
     location: "Jawa Timur",
   },
   {
     id: "11",
     name: "SMA Talogo 1",
-    logo: "/src/assets/logos/smatalogo1.png",
+    logo: logo("smatalogo1.png"),
     location: "Jawa Timur",
   },
   {
     id: "12",
     name: "SMK Patra Buwislogo 1",
-    logo: "/src/assets/logos/smkpatbwslogo1.png",
+    logo: logo("smkpatbwslogo1.png"),
     location: "Jakarta",
   },
 ];

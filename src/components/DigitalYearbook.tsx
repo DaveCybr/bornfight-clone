@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Search, ExternalLink, MapPin } from "lucide-react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { ebook } from "@/lib/assets";
 
 interface YearbookProject {
   id: string;
@@ -19,7 +20,7 @@ const yearbookProjects: YearbookProject[] = [
     id: "1",
     schoolName: "SMAN 1 Rambipuji",
     year: 2026,
-    thumbnail: "src/assets/ebook/10.-SMAN-1-RAMBIPUJI-scaled.jpg",
+    thumbnail: ebook("10.-SMAN-1-RAMBIPUJI-scaled.jpg"),
     ebookUrl: "#",
     location: "Jember, Jawa Timur",
   },
@@ -27,7 +28,7 @@ const yearbookProjects: YearbookProject[] = [
     id: "2",
     schoolName: "SMP Al-Furqon Jember",
     year: 2026,
-    thumbnail: "/src/assets/ebook/10.-SMP-AL-FURQON-JEMBER.jpg",
+    thumbnail: ebook("10.-SMP-AL-FURQON-JEMBER.jpg"),
     ebookUrl: "#",
     location: "Jember, Jawa Timur",
   },
@@ -35,7 +36,7 @@ const yearbookProjects: YearbookProject[] = [
     id: "3",
     schoolName: "SMAN 1 Bululawang",
     year: 2026,
-    thumbnail: "/src/assets/ebook/19.-SMAN-1-BULULAWANG.jpg",
+    thumbnail: ebook("19.-SMAN-1-BULULAWANG.jpg"),
     ebookUrl: "#",
     location: "Malang, Jawa Timur",
   },
@@ -43,7 +44,7 @@ const yearbookProjects: YearbookProject[] = [
     id: "4",
     schoolName: "SMK Telkom Sidoarjo",
     year: 2026,
-    thumbnail: "/src/assets/ebook/21.-SMK-TELKOM-SIDOARJO.jpg",
+    thumbnail: ebook("21.-SMK-TELKOM-SIDOARJO.jpg"),
     ebookUrl: "#",
     location: "Sidoarjo, Jawa Timur",
   },
@@ -51,7 +52,7 @@ const yearbookProjects: YearbookProject[] = [
     id: "5",
     schoolName: "SMA MTA Surakarta",
     year: 2026,
-    thumbnail: "/src/assets/ebook/SMAMIO-2-scaled.jpg",
+    thumbnail: ebook("SMAMIO-2-scaled.jpg"),
     ebookUrl: "#",
     location: "Surakarta, Jawa Tengah",
   },
@@ -59,7 +60,7 @@ const yearbookProjects: YearbookProject[] = [
     id: "6",
     schoolName: "Pocket Book Mockup",
     year: 2026,
-    thumbnail: "/src/assets/ebook/06_Pocket_Book_Mockup-scaled.jpg",
+    thumbnail: ebook("06_Pocket_Book_Mockup-scaled.jpg"),
     ebookUrl: "#",
     location: "Indonesia",
   },
