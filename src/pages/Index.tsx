@@ -10,6 +10,7 @@ import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { PhotoSession } from "@/components/PhotoSession";
 import { Testimonials } from "@/components/Testimonials";
+import { ClientLogosGrid } from "@/components/ClientLogosGrid";
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
       <Features />
       <PhotoSession />
       <Stats />
+      <ClientLogosGrid />
       <Timeline />
       <Process />
       <Team />
