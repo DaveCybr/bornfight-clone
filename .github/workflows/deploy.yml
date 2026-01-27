@@ -8,3 +8,131 @@ exclude: |
   **/wp-includes/**     # Protect WP core
   **/wp-config.php      # Protect WP config
   **/wp-*.php           # Protect WP files
+
+name: Deploy to rama.nano.co.id via SSH (Safe Mode)
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Checkout code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Install dependencies
+      - name: Install Dependencies
+        run: npm ci
+
+      # 4. Build project
+      - name: Build Project
+        run: npm run build
+        env:
+          NODE_ENV: production
+          PUBLIC_URL: https://rama.nano.co.id
+
+      # 5. Create deployment package
+      - name: Create Deployment Package
+        run: |
+          cd dist
+          tar -czf ../deploy.tar.gz .
+          cd ..
+
+      # 6. Deploy via SSH/SCP
+      - name: Upload to Server via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "deploy.tar.gz"
+          target: "/home/u5729770/temp/"
+
+      # 7. Extract and deploy (SAFE MODE - Preserve WordPress)
+      - name: Extract and Deploy Files (Safe Mode)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            # Create temp extraction directory
+            mkdir -p /home/u5729770/temp/extract
+            
+            # Extract files
+            cd /home/u5729770/temp
+            tar -xzf deploy.tar.gz -C extract/
+            
+            # Deploy files SAFELY (preserve wp folder)
+            cd extract
+            
+            # Only copy new files, don't delete anything
+            rsync -av --ignore-existing \
+              --exclude='wp' \
+              --exclude='wp-admin' \
+              --exclude='wp-content' \
+              --exclude='wp-includes' \
+              --exclude='wp-config.php' \
+              --exclude='wp-*.php' \
+              --exclude='.htaccess.wp' \
+              --exclude='xmlrpc.php' \
+              --exclude='backup' \
+              . /home/u5729770/public_html/rama.nano.co.id/
+            
+            # Update files that changed (overwrite mode)
+            rsync -av --update \
+              --exclude='wp' \
+              --exclude='wp-admin' \
+              --exclude='wp-content' \
+              --exclude='wp-includes' \
+              --exclude='wp-config.php' \
+              --exclude='wp-*.php' \
+              --exclude='.htaccess.wp' \
+              --exclude='xmlrpc.php' \
+              --exclude='backup' \
+              . /home/u5729770/public_html/rama.nano.co.id/
+            
+            # Cleanup temp files
+            cd /home/u5729770
+            rm -rf temp/
+            
+            echo "✅ Deployment completed successfully!"
+            echo "🔒 WordPress files preserved"
+
+      # 8. Verify WordPress folder still exists
+      - name: Verify WordPress Safety
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            if [ -d "/home/u5729770/public_html/rama.nano.co.id/wp" ]; then
+              echo "✅ WordPress folder (wp/) is safe!"
+              ls -la /home/u5729770/public_html/rama.nano.co.id/wp | head -5
+            else
+              echo "⚠️ Warning: WordPress folder not found"
+            fi
+
+      # 9. Success notification
+      - name: Deployment Success
+        if: success()
+        run: |
+          echo "✅ Deployment to nano.co.id successful!"
+          echo "🌐 Live URL: https://nano.co.id"
+          echo "🔒 WordPress folder (wp/) preserved"
