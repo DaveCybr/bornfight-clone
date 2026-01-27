@@ -1,4 +1,4 @@
-name: Deploy to rama.nano.co.id via SSH (Safe Mode)
+name: Deploy to rama.nano.co.id via SSH Key
 
 on:
   push:
@@ -20,8 +20,11 @@ jobs:
           node-version: "20"
           cache: "npm"
 
+      # Fix: Handle package-lock.json issues
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          npm install
+          npm ci
 
       - name: Build Project
         run: npm run build
@@ -35,7 +38,7 @@ jobs:
           tar -czf ../deploy.tar.gz .
           cd ..
 
-      # Using SSH Key
+      # Using SSH Key (from id_rama)
       - name: Upload to Server via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -54,12 +57,17 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            # Create temp extraction directory
             mkdir -p /home/u5729770/temp/extract
+
+            # Extract files
             cd /home/u5729770/temp
             tar -xzf deploy.tar.gz -C extract/
+
+            # Deploy files SAFELY (preserve wp folder)
             cd extract
 
-            # Safe deploy - preserve wp folder
+            # Update files (preserve WordPress)
             rsync -av --update \
               --exclude='wp' \
               --exclude='wp-admin' \
@@ -67,11 +75,17 @@ jobs:
               --exclude='wp-includes' \
               --exclude='wp-config.php' \
               --exclude='wp-*.php' \
+              --exclude='.htaccess.wp' \
+              --exclude='xmlrpc.php' \
+              --exclude='backup' \
               . /home/u5729770/public_html/rama.nano.co.id/
 
+            # Cleanup temp files
             cd /home/u5729770
             rm -rf temp/
-            echo "✅ Deployment completed!"
+
+            echo "✅ Deployment completed successfully!"
+            echo "🔒 WordPress files preserved"
 
       - name: Verify WordPress Safety
         uses: appleboy/ssh-action@v1.0.3
@@ -83,12 +97,14 @@ jobs:
           script: |
             if [ -d "/home/u5729770/public_html/rama.nano.co.id/wp" ]; then
               echo "✅ WordPress folder (wp/) is safe!"
+              ls -la /home/u5729770/public_html/rama.nano.co.id/wp | head -5
             else
-              echo "⚠️ WordPress folder not found"
+              echo "⚠️ Warning: WordPress folder not found"
             fi
 
       - name: Deployment Success
         if: success()
         run: |
-          echo "✅ Deployed to https://rama.nano.co.id"
-          echo "🔒 WordPress preserved"
+          echo "✅ Deployment to rama.nano.co.id successful!"
+          echo "🌐 Live URL: https://rama.nano.co.id"
+          echo "🔒 WordPress folder (wp/) preserved"
