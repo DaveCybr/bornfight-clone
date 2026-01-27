@@ -2,20 +2,24 @@ import { motion } from "framer-motion";
 
 const footerLinks = [
   {
-    title: "Company",
-    links: ["About", "Careers", "Blog", "Contact"],
+    title: "Layanan",
+    links: ["Exclusive Yearbook", "Film Angkatan", "Drone Shoot", "Event Coverage"],
   },
   {
-    title: "Ventures",
-    links: ["SWEN", "Tabu", "Elevien", "Determ"],
+    title: "Platform",
+    links: ["Digital Yearbook", "Augmented Reality", "Nano Hub Creative"],
   },
   {
-    title: "Legal",
-    links: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
+    title: "Perusahaan",
+    links: ["Tentang Kami", "Portfolio", "Tim Kami", "Hubungi Kami"],
   },
 ];
 
-const socialLinks = ["LinkedIn", "Twitter", "Instagram"];
+const socialLinks = [
+  { name: "Instagram", url: "https://instagram.com/nanoidn" },
+  { name: "TikTok", url: "https://tiktok.com/@nanoidn" },
+  { name: "WhatsApp", url: "https://wa.me/628888477774" },
+];
 
 export function Footer() {
   return (
@@ -31,10 +35,14 @@ export function Footer() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                nanoidn
+                nano<span className="text-accent">idn</span>
               </motion.a>
-              <p className="text-sm text-muted-foreground">
-                Building ventures that make an impact.
+              <p className="text-sm text-muted-foreground mb-4">
+                Abadikan momen terbaik dalam cerita visual.
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Komp. Royal City Icon J25<br />
+                Kaliwates, Kab. Jember
               </p>
             </div>
 
@@ -65,16 +73,18 @@ export function Footer() {
 
           <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border gap-4">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Bornfight. All rights reserved.
+              © {new Date().getFullYear()} nanoidn. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               {socialLinks.map((social) => (
                 <a
-                  key={social}
-                  href="#"
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {social}
+                  {social.name}
                 </a>
               ))}
             </div>
