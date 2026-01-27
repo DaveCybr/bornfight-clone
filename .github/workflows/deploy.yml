@@ -1,4 +1,5 @@
-dangerous-clean-slate: false  # NEVER delete all files
+dangerous-clean-slate: false  # ← MUST BE false
+dry-run: false  
 
 exclude: |
   **/wp/**              # Protect WordPress folder
