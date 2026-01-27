@@ -1,4 +1,4 @@
-name: Deploy to rama.nano.co.id via SSH Key
+name: Deploy to nano.co.id via SSH Key
 
 on:
   push:
@@ -30,7 +30,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          PUBLIC_URL: https://rama.nano.co.id
+          PUBLIC_URL: https://nano.co.id
 
       - name: Create Deployment Package
         run: |
@@ -78,7 +78,7 @@ jobs:
               --exclude='.htaccess.wp' \
               --exclude='xmlrpc.php' \
               --exclude='backup' \
-              . /home/u5729770/public_html/rama.nano.co.id/
+              . /home/u5729770/public_html/nano.co.id/
 
             # Cleanup temp files
             cd /home/u5729770
@@ -95,9 +95,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            if [ -d "/home/u5729770/public_html/rama.nano.co.id/wp" ]; then
+            if [ -d "/home/u5729770/public_html/nano.co.id/wp" ]; then
               echo "✅ WordPress folder (wp/) is safe!"
-              ls -la /home/u5729770/public_html/rama.nano.co.id/wp | head -5
+              ls -la /home/u5729770/public_html/nano.co.id/wp | head -5
             else
               echo "⚠️ Warning: WordPress folder not found"
             fi
@@ -105,6 +105,6 @@ jobs:
       - name: Deployment Success
         if: success()
         run: |
-          echo "✅ Deployment to rama.nano.co.id successful!"
-          echo "🌐 Live URL: https://rama.nano.co.id"
+          echo "✅ Deployment to nano.co.id successful!"
+          echo "🌐 Live URL: https://nano.co.id"
           echo "🔒 WordPress folder (wp/) preserved"
