@@ -20,16 +20,16 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      # Fix: Handle package-lock.json issues
       - name: Install Dependencies
-        run: |
-          npm ci
+        run: npm ci
 
       - name: Build Project
         run: npm run build
         env:
           NODE_ENV: production
           PUBLIC_URL: https://nano.co.id
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
 
       - name: Create Deployment Package
         run: |
@@ -37,7 +37,6 @@ jobs:
           tar -czf ../deploy.tar.gz .
           cd ..
 
-      # Using SSH Key (from id_rama)
       - name: Upload to Server via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
