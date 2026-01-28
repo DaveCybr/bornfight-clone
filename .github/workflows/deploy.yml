@@ -23,7 +23,6 @@ jobs:
       # Fix: Handle package-lock.json issues
       - name: Install Dependencies
         run: |
-          npm install
           npm ci
 
       - name: Build Project
