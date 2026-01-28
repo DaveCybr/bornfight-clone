@@ -3,82 +3,22 @@ import { useState } from "react";
 import { Search, ExternalLink, MapPin } from "lucide-react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { ebook } from "@/lib/assets";
-
-interface YearbookProject {
-  id: string;
-  schoolName: string;
-  year: number;
-  thumbnail: string;
-  ebookUrl: string;
-  location?: string;
-}
-
-// Data sekolah - sesuaikan dengan data NANO yang sebenarnya
-const yearbookProjects: YearbookProject[] = [
-  {
-    id: "1",
-    schoolName: "SMAN 1 Rambipuji",
-    year: 2026,
-    thumbnail: ebook("10.-SMAN-1-RAMBIPUJI-scaled.jpg"),
-    ebookUrl: "#",
-    location: "Jember, Jawa Timur",
-  },
-  {
-    id: "2",
-    schoolName: "SMP Al-Furqon Jember",
-    year: 2026,
-    thumbnail: ebook("10.-SMP-AL-FURQON-JEMBER.jpg"),
-    ebookUrl: "#",
-    location: "Jember, Jawa Timur",
-  },
-  {
-    id: "3",
-    schoolName: "SMAN 1 Bululawang",
-    year: 2026,
-    thumbnail: ebook("19.-SMAN-1-BULULAWANG.jpg"),
-    ebookUrl: "#",
-    location: "Malang, Jawa Timur",
-  },
-  {
-    id: "4",
-    schoolName: "SMK Telkom Sidoarjo",
-    year: 2026,
-    thumbnail: ebook("21.-SMK-TELKOM-SIDOARJO.jpg"),
-    ebookUrl: "#",
-    location: "Sidoarjo, Jawa Timur",
-  },
-  {
-    id: "5",
-    schoolName: "SMA MTA Surakarta",
-    year: 2026,
-    thumbnail: ebook("SMAMIO-2-scaled.jpg"),
-    ebookUrl: "#",
-    location: "Surakarta, Jawa Tengah",
-  },
-  {
-    id: "6",
-    schoolName: "Pocket Book Mockup",
-    year: 2026,
-    thumbnail: ebook("06_Pocket_Book_Mockup-scaled.jpg"),
-    ebookUrl: "#",
-    location: "Indonesia",
-  },
-];
+import { useYearbooks } from "@/hooks/useYearbooks";
 
 export function DigitalYearbook() {
+  const { yearbooks, loading } = useYearbooks();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedYear, setSelectedYear] = useState<number | "all">("all");
 
   // Get unique years
-  const years = Array.from(new Set(yearbookProjects.map((p) => p.year))).sort(
+  const years = Array.from(new Set(yearbooks.map((p) => p.year))).sort(
     (a, b) => b - a,
   );
 
   // Filter projects
-  const filteredProjects = yearbookProjects.filter((project) => {
+  const filteredProjects = yearbooks.filter((project) => {
     const matchesSearch =
-      project.schoolName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.school_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.location?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesYear = selectedYear === "all" || project.year === selectedYear;
     return matchesSearch && matchesYear;
@@ -147,7 +87,15 @@ export function DigitalYearbook() {
         {/* Projects Grid - Clean Minimalist Style */}
         <section className="section-padding pt-0">
           <div className="max-w-7xl mx-auto">
-            {filteredProjects.length === 0 ? (
+            {loading ? (
+              <motion.div
+                className="text-center py-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                <p className="text-muted-foreground text-lg">Memuat data...</p>
+              </motion.div>
+            ) : filteredProjects.length === 0 ? (
               <motion.div
                 className="text-center py-20"
                 initial={{ opacity: 0 }}
@@ -162,7 +110,7 @@ export function DigitalYearbook() {
                 {filteredProjects.map((project, index) => (
                   <motion.a
                     key={project.id}
-                    href={project.ebookUrl}
+                    href={project.ebook_url}
                     target="_blank"
                     rel="noopener noreferrer"
                     initial={{ opacity: 0, y: 30 }}
@@ -181,8 +129,8 @@ export function DigitalYearbook() {
                         }}
                       >
                         <img
-                          src={project.thumbnail}
-                          alt={project.schoolName}
+                          src={project.thumbnail_url}
+                          alt={project.school_name}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
 
@@ -207,7 +155,7 @@ export function DigitalYearbook() {
                     {/* School Info - Below Card */}
                     <div className="mt-4 text-center">
                       <h3 className="font-bold text-sm md:text-base text-foreground group-hover:text-accent transition-colors line-clamp-2 leading-tight">
-                        {project.schoolName}
+                        {project.school_name}
                       </h3>
                       {project.location && (
                         <p className="text-xs text-muted-foreground mt-1 flex items-center justify-center gap-1">
