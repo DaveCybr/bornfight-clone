@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      yearbooks: {
+        Row: {
+          created_at: string
+          ebook_url: string
+          id: string
+          location: string | null
+          school_name: string
+          thumbnail_url: string
+          updated_at: string
+          year: number
+        }
+        Insert: {
+          created_at?: string
+          ebook_url?: string
+          id?: string
+          location?: string | null
+          school_name: string
+          thumbnail_url: string
+          updated_at?: string
+          year: number
+        }
+        Update: {
+          created_at?: string
+          ebook_url?: string
+          id?: string
+          location?: string | null
+          school_name?: string
+          thumbnail_url?: string
+          updated_at?: string
+          year?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
