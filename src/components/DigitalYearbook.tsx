@@ -29,7 +29,7 @@ export function DigitalYearbook() {
       <Navbar />
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="section-padding md:pt-40">
+        <section className=" md:pt-40">
           <div className="max-w-7xl mx-auto">
             <motion.div
               className="text-center mb-16"
@@ -85,7 +85,7 @@ export function DigitalYearbook() {
         </section>
 
         {/* Projects Grid - Clean Minimalist Style */}
-        <section className="section-padding pt-0">
+        <section className=" pt-0">
           <div className="max-w-7xl mx-auto">
             {loading ? (
               <motion.div
