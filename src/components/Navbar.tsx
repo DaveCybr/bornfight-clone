@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
   { name: "Homepage", href: "/" },
@@ -15,10 +14,10 @@ export function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between max-w-7xl mx-auto">
           <motion.a
-            href="#"
-            className="text-2xl font-bold tracking-tight text-foreground"
+            href="/"
+            className="font-display text-2xl font-bold tracking-tight text-foreground"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -27,29 +26,26 @@ export function Navbar() {
           </motion.a>
 
           <div className="flex items-center gap-4">
-            <motion.div
+            <motion.a
+              href="https://wa.me/628888477774"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full border border-border text-sm font-medium hover:bg-foreground hover:text-background transition-all duration-300"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <Button
-                variant="outline"
-                className="hidden md:flex border-foreground/20 bg-transparent hover:bg-foreground hover:text-background transition-all duration-300"
-                onClick={() =>
-                  window.open("https://wa.me/628888477774", "_blank")
-                }
-              >
-                Hubungi Kami
-              </Button>
-            </motion.div>
+              Hubungi Kami
+            </motion.a>
 
             <motion.button
               onClick={() => setIsOpen(true)}
-              className="p-2 hover:bg-secondary rounded-lg transition-colors"
+              className="flex items-center gap-2 p-2 hover:bg-card rounded-lg transition-colors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
+              <span className="text-sm font-medium hidden sm:inline">Menu</span>
               <Menu className="w-6 h-6" />
             </motion.button>
           </div>
@@ -65,61 +61,65 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="h-full flex flex-col px-6 md:px-12 py-6">
+            <div className="h-full flex flex-col px-6 md:px-12 py-6 max-w-7xl mx-auto">
+              {/* Header */}
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-bold tracking-tight">
+                <span className="font-display text-2xl font-bold tracking-tight">
                   nano<span className="text-accent">idn</span>
                 </span>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                  className="flex items-center gap-2 p-2 hover:bg-card rounded-lg transition-colors"
                 >
+                  <span className="text-sm font-medium">Close</span>
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
-              <div className="flex-1 flex flex-col items-start md:items-center justify-center gap-8 md:gap-12">
-                <div className="space-y-6 w-full md:w-auto">
+              {/* Main Content */}
+              <div className="flex-1 flex flex-col items-start justify-center">
+                <div className="space-y-4 md:space-y-6 w-full">
                   {navLinks.map((link, index) => (
                     <motion.a
                       key={link.name}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="block text-4xl md:text-6xl font-bold hover:text-accent transition-colors"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      className="group block font-display text-5xl md:text-7xl lg:text-8xl font-bold hover:text-accent transition-colors"
+                      initial={{ opacity: 0, x: -40 }}
+                      animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + index * 0.1 }}
                     >
-                      {link.name}
+                      <span className="inline-flex items-center gap-4">
+                        {link.name}
+                        <ArrowRight className="w-8 h-8 md:w-12 md:h-12 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                      </span>
                     </motion.a>
                   ))}
                 </div>
 
-                <motion.div
-                  className="w-full md:w-auto"
+                <motion.a
+                  href="https://wa.me/628888477774"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-12 inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-all"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
+                  onClick={() => setIsOpen(false)}
                 >
-                  <Button
-                    className="w-full md:w-auto bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-6 text-lg"
-                    onClick={() => {
-                      window.open("https://wa.me/628888477774", "_blank");
-                      setIsOpen(false);
-                    }}
-                  >
-                    Hubungi Kami
-                  </Button>
-                </motion.div>
+                  <span>Hubungi Kami</span>
+                  <ArrowRight className="w-5 h-5" />
+                </motion.a>
               </div>
 
+              {/* Footer */}
               <motion.div
-                className="text-center md:text-left text-sm text-muted-foreground"
+                className="text-sm text-muted-foreground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7 }}
               >
-                <p className="mb-2">
+                <p className="mb-1">
                   Komp. Royal City Icon J25 Kaliwates, Kab. Jember
                 </p>
                 <p>admin@nano.co.id • +62 8888 4 7777 4</p>
