@@ -27,23 +27,31 @@ export function PhotoSession() {
   return (
     <section className="section-padding">
       <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
         <motion.div
-          className="text-center mb-16 md:mb-24"
+          className="mb-16 md:mb-24"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-accent uppercase tracking-[0.3em] text-sm mb-4">
+          <p className="text-muted-foreground italic text-base mb-4">
             Sesi Foto Profesional
           </p>
-          <h2 className="heading-lg mb-6">Photo Session</h2>
-          <p className="body-lg max-w-2xl mx-auto">
-            Dari foto formal hingga konsep kreatif, semua dirancang agar setiap
-            kenangan tampil menawan di buku tahunan.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+              Photo
+              <br />
+              <span className="text-gradient-accent">Session</span>
+            </h2>
+            <p className="text-muted-foreground max-w-md">
+              Dari foto formal hingga konsep kreatif, semua dirancang agar setiap
+              kenangan tampil menawan di buku tahunan.
+            </p>
+          </div>
         </motion.div>
 
+        {/* Photo Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {photoTypes.map((photo, index) => (
             <motion.div
@@ -58,31 +66,31 @@ export function PhotoSession() {
               <img
                 src={photo.image}
                 alt={photo.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
 
-              {/* Gradient overlay - darker for better text contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-6">
                 <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Camera className="w-5 h-5 text-accent" />
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-8 h-8 rounded-full bg-accent/20 backdrop-blur-sm flex items-center justify-center">
+                      <Camera className="w-4 h-4 text-accent" />
+                    </div>
                     <span className="text-xs uppercase tracking-widest text-accent font-medium">
                       Photo Session
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">
+                  <h3 className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">
                     {photo.title}
                   </h3>
                 </div>
               </div>
 
-              {/* Subtle glow on hover - NO BLUR */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(59,130,246,0.15)]" />
-              </div>
+              {/* Hover border glow */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none border border-accent/30" />
             </motion.div>
           ))}
         </div>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const footerLinks = [
   {
@@ -23,58 +24,78 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border">
+    <footer className="border-t border-border/50 bg-card/30">
       <div className="section-padding py-16 md:py-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 mb-16">
-            <div className="col-span-2 md:col-span-1">
-              <motion.a
+          {/* Top Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            {/* Brand & CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <a
                 href="#"
-                className="text-2xl font-bold tracking-tight inline-block mb-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
+                className="font-display text-3xl md:text-4xl font-bold inline-block mb-6"
               >
                 nano<span className="text-accent">idn</span>
-              </motion.a>
-              <p className="text-sm text-muted-foreground mb-4">
-                Abadikan momen terbaik dalam cerita visual.
+              </a>
+              <p className="text-muted-foreground mb-6 max-w-sm">
+                Abadikan momen terbaik dalam cerita visual. Lebih dari sekadar
+                buku kenangan.
               </p>
-              <p className="text-xs text-muted-foreground">
-                Komp. Royal City Icon J25<br />
-                Kaliwates, Kab. Jember
-              </p>
-            </div>
-
-            {footerLinks.map((section, sectionIndex) => (
-              <motion.div
-                key={section.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: sectionIndex * 0.1 }}
+              <a
+                href="https://wa.me/628888477774"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-foreground font-medium hover:text-accent transition-colors"
               >
-                <h4 className="font-semibold mb-4 text-sm">{section.title}</h4>
-                <ul className="space-y-2">
-                  {section.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+                <span>Hubungi Kami</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </motion.div>
+
+            {/* Links */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+              {footerLinks.map((section, sectionIndex) => (
+                <motion.div
+                  key={section.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: sectionIndex * 0.1 }}
+                >
+                  <h4 className="font-semibold mb-4 text-sm text-foreground">
+                    {section.title}
+                  </h4>
+                  <ul className="space-y-3">
+                    {section.links.map((link) => (
+                      <li key={link}>
+                        <a
+                          href="#"
+                          className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                        >
+                          {link}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border gap-4">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} nanoidn. All rights reserved.
-            </p>
+          {/* Bottom Section */}
+          <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border/50 gap-4">
+            <div className="text-center md:text-left">
+              <p className="text-sm text-muted-foreground">
+                © {new Date().getFullYear()} nanoidn. All rights reserved.
+              </p>
+              <p className="text-xs text-muted-foreground/60 mt-1">
+                Komp. Royal City Icon J25, Kaliwates, Kab. Jember
+              </p>
+            </div>
             <div className="flex items-center gap-6">
               {socialLinks.map((social) => (
                 <a
@@ -82,7 +103,7 @@ export function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-muted-foreground hover:text-accent transition-colors"
                 >
                   {social.name}
                 </a>
