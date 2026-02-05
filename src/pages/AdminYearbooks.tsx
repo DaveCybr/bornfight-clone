@@ -25,16 +25,30 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { useToast } from '@/hooks/use-toast';
-import { Plus, Pencil, Trash2, Search, LogOut, Book, ExternalLink } from 'lucide-react';
+ import { Plus, Pencil, Trash2, Search, LogOut, Book, ExternalLink, Settings, Wrench } from 'lucide-react';
+ import { Switch } from '@/components/ui/switch';
+ import { Label } from '@/components/ui/label';
+ import { Textarea } from '@/components/ui/textarea';
+ import { useMaintenanceMode } from '@/hooks/useMaintenanceMode';
+ import {
+   Sheet,
+   SheetContent,
+   SheetDescription,
+   SheetHeader,
+   SheetTitle,
+   SheetTrigger,
+ } from '@/components/ui/sheet';
 
 export default function AdminYearbooks() {
   const { user, loading: authLoading, signOut } = useAuth();
   const { yearbooks, loading, addYearbook, updateYearbook, deleteYearbook } = useYearbooks();
+ const { isMaintenanceMode, maintenanceMessage, toggleMaintenanceMode, isUpdating } = useMaintenanceMode();
   const [searchQuery, setSearchQuery] = useState('');
   const [formOpen, setFormOpen] = useState(false);
   const [editingYearbook, setEditingYearbook] = useState<Yearbook | null>(null);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [deletingYearbook, setDeletingYearbook] = useState<Yearbook | null>(null);
+ const [tempMessage, setTempMessage] = useState(maintenanceMessage);
   
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -143,6 +157,76 @@ export default function AdminYearbooks() {
               >
                 Lihat Website <ExternalLink className="w-3 h-3" />
               </a>
+             <Sheet>
+               <SheetTrigger asChild>
+                 <Button variant="ghost" size="sm">
+                   <Settings className="w-4 h-4 mr-2" />
+                   Settings
+                 </Button>
+               </SheetTrigger>
+               <SheetContent className="bg-card border-border">
+                 <SheetHeader>
+                   <SheetTitle>Site Settings</SheetTitle>
+                   <SheetDescription>
+                     Kelola pengaturan website
+                   </SheetDescription>
+                 </SheetHeader>
+                 <div className="mt-6 space-y-6">
+                   {/* Maintenance Mode Toggle */}
+                   <div className="space-y-4">
+                     <div className="flex items-center justify-between p-4 rounded-lg bg-background border border-border">
+                       <div className="flex items-center gap-3">
+                         <Wrench className="w-5 h-5 text-accent" />
+                         <div>
+                           <Label htmlFor="maintenance-mode" className="font-medium">
+                             Maintenance Mode
+                           </Label>
+                           <p className="text-xs text-muted-foreground mt-0.5">
+                             Aktifkan untuk menutup akses website sementara
+                           </p>
+                         </div>
+                       </div>
+                       <Switch
+                         id="maintenance-mode"
+                         checked={isMaintenanceMode}
+                         onCheckedChange={(checked) => toggleMaintenanceMode(checked, tempMessage)}
+                         disabled={isUpdating}
+                       />
+                     </div>
+                     
+                     {/* Maintenance Message */}
+                     <div className="space-y-2">
+                       <Label htmlFor="maintenance-message">Pesan Maintenance</Label>
+                       <Textarea
+                         id="maintenance-message"
+                         placeholder="Kami sedang melakukan pemeliharaan..."
+                         value={tempMessage || maintenanceMessage}
+                         onChange={(e) => setTempMessage(e.target.value)}
+                         className="min-h-24"
+                       />
+                       <Button 
+                         size="sm" 
+                         variant="outline"
+                         onClick={() => toggleMaintenanceMode(isMaintenanceMode, tempMessage)}
+                         disabled={isUpdating}
+                       >
+                         Simpan Pesan
+                       </Button>
+                     </div>
+                   </div>
+ 
+                   {/* Status Indicator */}
+                   <div className={`p-4 rounded-lg border ${isMaintenanceMode ? 'bg-destructive/10 border-destructive/30' : 'bg-green-500/10 border-green-500/30'}`}>
+                     <div className="flex items-center gap-2">
+                       <div className={`w-2 h-2 rounded-full ${isMaintenanceMode ? 'bg-destructive animate-pulse' : 'bg-green-500'}`} />
+                       <span className="text-sm font-medium">
+                         {isMaintenanceMode ? 'Website sedang dalam maintenance' : 'Website aktif dan online'}
+                       </span>
+                     </div>
+                   </div>
+                 </div>
+               </SheetContent>
+             </Sheet>
               <span className="text-sm text-muted-foreground">{user?.email}</span>
               <Button variant="ghost" size="sm" onClick={handleSignOut}>
                 <LogOut className="w-4 h-4 mr-2" />
