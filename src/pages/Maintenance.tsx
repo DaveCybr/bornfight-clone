@@ -1,7 +1,9 @@
  import { motion } from "framer-motion";
  import { Wrench, Clock, Mail } from "lucide-react";
+ import { useMaintenanceMode } from "@/hooks/useMaintenanceMode";
  
  const Maintenance = () => {
+   const { maintenanceMessage } = useMaintenanceMode();
    return (
      <div className="min-h-screen bg-background hero-gradient-bg flex items-center justify-center px-6">
        <div className="max-w-2xl text-center">
@@ -33,8 +35,7 @@
            transition={{ delay: 0.3 }}
            className="text-lg md:text-xl text-muted-foreground mb-12 max-w-lg mx-auto"
          >
-           Kami sedang melakukan peningkatan untuk memberikan pengalaman yang lebih baik. 
-           Silakan kembali dalam beberapa saat.
+           {maintenanceMessage || "Kami sedang melakukan peningkatan untuk memberikan pengalaman yang lebih baik. Silakan kembali dalam beberapa saat."}
          </motion.p>
  
          {/* Info Cards */}
